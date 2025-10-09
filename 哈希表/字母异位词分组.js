@@ -24,3 +24,13 @@ var groupAnagrams = function (strs) {
 // str =["eat","tea","tan","ate","nat","bat"]
 // 空间复杂度 O(nm)
 // 时间复杂度 O(nmlogm)
+
+var groupAnagrams = function (strs) {
+    const m = new Map()
+    for (const x of strs) {
+        const sortedX = x.split('').sort().join('')
+        // 优化 - 使用三目运算符
+        m.has(sortedX) ? m.get(sortedX).push(x) : m.set(sortedX, [x])
+    }
+    return Array.from(m.values())
+};
