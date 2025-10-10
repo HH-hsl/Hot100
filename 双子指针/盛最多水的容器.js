@@ -7,11 +7,11 @@
 // S(i,j)=min(h[i],h[j]) * (j - i)
 var maxArea = function (height) {
     // 最大容积，左边界，右边界
-    let res = 0, left = 0, right = height.length - 1;
+    let res = 0, s = 0, left = 0, right = height.length - 1;
     // while循环确保 左边界小于右边界时
     while (left < right) {
         // 计算目前的容积
-        let s = (right - left) * Math.min(height[left], height[right])
+        s = (right - left) * Math.min(height[left], height[right])
         // 将最大面积赋值给res。
         res = Math.max(res, s)
         // 左右边界，谁小谁往中间移动
