@@ -8,6 +8,15 @@ class ListNode {
   }
 }
 
+// 链表的构造函数
+function ListNode(val, next) {
+  this.val = (val === undefined ? 0 : val);
+  this.next = (next === undefined ? null : next);
+}
+
+// 生成哨兵节点 0-节点元素 head - 下一节点
+const dummy = new ListNode(0, head)
+
 
 
 
