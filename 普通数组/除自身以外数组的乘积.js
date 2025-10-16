@@ -7,9 +7,38 @@
  * @return {number[]}
  */
 var productExceptSelf = function (nums) {
-    let firstPre = 0;
-    let lastPre = 0;
-    for (let i of nums) {
-        const x = nums[i]
+    const n = nums.length;
+    const pre = Array(n);
+    pre[0] = 1
+    for (let j = 1; j < n; j++) {
+        pre[j] = pre[j - 1] * nums[j - 1];
     }
+    const after = Array(n);
+    after[n - 1] = 1;
+    for (let j = n - 2; j >= 0; j--) {
+        after[j] = after[j + 1] * nums[j + 1];
+    }
+
+    const ans = Array(n);
+    for (let j = 0; j < n; j++) {
+        ans[j] = pre[j] * after[j];
+    }
+    return ans;
 };
+
+// 优化：不需要额外空间，求出前缀后，求后缀的同时合并   
+var productExceptSelf = function (nums) {
+    const n = nums.length;
+    const pre = Array(n);
+    pre[0] = 1
+    for (let j = 1; j < n; j++) {
+        pre[j] = pre[j - 1] * nums[j - 1];
+    }
+    const ans = Array(n);
+    let after = 1;
+    for (let j = n - 1; j >= 0; j--) {
+        ans[j] = pre[j] * after;
+        after = after * nums[j];
+    }
+    return ans;
+}
