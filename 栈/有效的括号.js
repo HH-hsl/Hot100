@@ -15,7 +15,7 @@ var isValid = function (s) {
     const mp = { ')': '(', '}': '{', ']': '[' }
     const st = []
     for (const i of s) {
-        if (!mp[i]) {
+        if (!mp[i]) {  //i 是 左括号
             st.push(i)
         } else if (st.length === 0 || st.pop() !== mp[i]) {
             return false;
