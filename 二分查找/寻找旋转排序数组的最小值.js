@@ -25,5 +25,6 @@ var findMin = function (nums) {
             left = mid + 1
         }
     }
+    // 或者是 nums[left]
     return nums[right + 1]
 };
