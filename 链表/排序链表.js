@@ -18,6 +18,7 @@ var sortList = function (head) {
         fast = fast.next.next;
     }
     pre.next = null;
+
     const leftSorted = sortList(head);
     const rightSorted = sortList(slow);
     return mergeTwoLists(leftSorted, rightSorted);
